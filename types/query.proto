@@ -1,3 +1,26 @@
 syntax = "proto3";
 
 package types;
+option go_package = "./types/";
+
+
+message SearchFilters{
+  string FieldName =1;
+  int64 Start =2;
+  int64 End =3;
+  repeated int64 Range =4;
+  uint64 Type =5;
+}
+
+message Keyword {
+  string Field = 1;
+  string Word = 2;
+}
+
+message TermQuery {
+
+  Keyword Keyword = 1;    //Keyword类型引用自doc.proto
+  repeated TermQuery Must = 2;
+  repeated TermQuery Should = 3;
+}
+

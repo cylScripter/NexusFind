@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package engine;
+
+import "types/doc/doc.proto";  //从-I指定的目录下寻找该proto文件
+import "types/query.proto";
+option go_package = "./engine/";
+
+message SimpleFieldInfo{
+   string FieldName =1;
+   uint64 FieldType = 2;
+}
+
+message CreateIndexRequest {
+   string IndexName  = 1;
+   repeated SimpleFieldInfo FieldInfo =2;
+}
+
+message AddRequest {
+   string IndexName  = 1;
+   doc.Document Doc = 2;
+}
+
+message DocIdRequest {
+   string IndexName  = 1;
+   string DocId  = 2;
+}
+
+message SearchRequest {
+   string IndexName  = 1;
+   types.TermQuery Query =2;
+   repeated types.SearchFilters Filter = 3;
+}
+
+message Result {
+   repeated doc.Document DocResult = 1;
+}
+
+message Code {
+   uint64  StatusCode =1;
+}
+
+message GetResult {
+   doc.Document Doc = 1;
+   bool Exist =2 ;
+}
+
+service IndexService {
+   rpc Delete(DocIdRequest) returns (Code);
+   rpc Add(AddRequest) returns (Code);
+   rpc Search(SearchRequest) returns (Result);
+   rpc Get(DocIdRequest)  returns (GetResult);
+   rpc CreateIndex(CreateIndexRequest) returns (Code);
+}

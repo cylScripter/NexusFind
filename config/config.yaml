@@ -1,0 +1,11 @@
+service:
+  service_name: "index_service"
+  worker_host: "localhost"
+  worker_port: 50051
+  etcd: ["localhost:2379"]
+  master_host: "localhost"
+  master_port: 50001
+  node_name: "master"
+
+
+stop_words: "./utils/stopWords.txt"

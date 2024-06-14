@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package doc;
+option go_package = "./internal/doc/";
+
+message KeyWord{
+  string Word =1 ;
+  float WordTF = 2;
+}
+
+message Document {
+  string Id = 1;
+  repeated KeyWord Keywords = 2;
+  map<string, string> Content = 4;
+}
+
+
+
