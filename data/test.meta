@@ -1,1 +1,0 @@
-{"name":"test","pathName":"./data/","fields":{"author":1,"category":2,"content":2,"id":21,"likeCount":11,"times":15,"url":31},"primaryKey":"id","startDocId":0,"maxDocId":100088,"delDocNum":0,"nextSegmentSuffix":2,"segmentNames":["./data/test_0/","./data/test_1/"]}
